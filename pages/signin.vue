@@ -5,9 +5,9 @@
       <v-card-text>
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
-            v-model="user.email"
-            label="Email"
-            :rules="[rules.emailRules, rules.required]"
+            v-model="user.username"
+            label="Email or your phone"
+            :rules="[rules.required]"
             placeholder=""
             outlined
             required
@@ -23,6 +23,15 @@
             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             counter
             @click:append="show1 = !show1"
+            required
+          >
+          </v-text-field>
+           <v-text-field
+            v-model="user.device_token"
+            label="device token"
+            placeholder=""
+            outlined
+            :rules="[rules.required]"
             required
           >
           </v-text-field>
@@ -47,18 +56,15 @@ export default {
       show1: false,
       valid: false,
       user: {
-        email: '',
+        username: '',
         password: '',
+        device_token: '',
       },
 
       rules: {
         required: (value) => !!value || 'Required.',
         min: (v) => v.length >= 8 || 'Min 8 characters',
         emailMatch: () => `The email and password you entered don't match`,
-        emailRules: [
-          (v) => !!v || 'E-mail is required',
-          (v) => /.+@.+/.test(v) || 'E-mail must be valid',
-        ],
       },
     }
   },
@@ -69,10 +75,14 @@ export default {
     validate() {
       return this.$refs.form.validate()
     },
-    onSubmit(e) {
-      console.log(this.validate())
+    async onSubmit(e) {
       if (this.validate()) {
-        this.signIn(this.user)
+        console.log("Currently at the method onSubmit! Step 1")
+        console.log(this.user);
+         await this.signIn(this.user)
+         this.$router.push('/userProfile');
+        // console.log('res from store again ', this.$store.state.user.name);
+        console.log("I'm back at onSubmit! Step 5")
       }
     },
   },

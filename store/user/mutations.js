@@ -1,11 +1,14 @@
 export default {
   USER_ACCESS(state, payload) {
-    state.signedIn = true
-    state.token = payload.data.token
-    state.user.name = payload.data.user.name
-    state.user.phone = payload.data.user.phone
-    state.user.email = payload.data.user.email
-    state.user.username = payload.data.user.username
+    console.log("Currently at the mutation USER_ACCESS! Step 3")
+    state.token = payload.user.token
+    state.name = payload.user.name
+    state.phone = payload.user.phone_number
+    state.email = payload.user.email
+    state.image = payload.user.image
+    // state.info.name = payload.user.phone
+
     console.log(JSON.stringify(state))
+    return "done!";
   },
 }
