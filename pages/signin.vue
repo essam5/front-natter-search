@@ -26,15 +26,6 @@
             required
           >
           </v-text-field>
-           <v-text-field
-            v-model="user.device_token"
-            label="device token"
-            placeholder=""
-            outlined
-            :rules="[rules.required]"
-            required
-          >
-          </v-text-field>
           <v-btn @click="onSubmit" block color="#3b9a80" style="color: white">
             Submit
           </v-btn>
@@ -58,7 +49,7 @@ export default {
       user: {
         username: '',
         password: '',
-        device_token: '',
+        device_token: 'newDevice',
       },
 
       rules: {

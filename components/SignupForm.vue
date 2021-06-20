@@ -13,19 +13,6 @@
           >
           </v-text-field>
         </v-col>
-        <v-col>
-          <v-text-field
-            v-model="user.device_token"
-            label="device token"
-            :rules="[rules.required]"
-            validate-on-blur
-            counter
-            placeholder=""
-            outlined
-            required
-          >
-          </v-text-field>
-        </v-col>
       </v-row>
       <v-row>
         <v-col>
@@ -107,7 +94,7 @@ export default {
       valid: false,
       user: {
         name: '',
-        device_token: '',
+        device_token: 'newDevice',
         email: '',
         password: '',
         phone_number: '',
