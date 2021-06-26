@@ -7,7 +7,7 @@
         </v-app-bar-icon>
       </router-link>
       <v-spacer />
-      <v-btn to="/userProfile" large text plain style="color:green;" v-if="$store.state.user.token"> Profile </v-btn>
+      <v-btn to="/userProfile" large text plain class="btn" style="color:green;" v-if="$store.state.user.token"> Profile </v-btn>
 
       <v-btn to="/about" large text plain class="btn" style="color:green;" v-else>
        About
