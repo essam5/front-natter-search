@@ -1,6 +1,5 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
+  <!-- <svg
     :width="logoSize"
     height="50"
     viewBox="0 0 724 118"
@@ -14,7 +13,11 @@
       <tspan x="0" y="0">Natter</tspan>
       <tspan x="350" y="0" fill="#747474">Search</tspan>
     </text>
-  </svg>
+
+  </svg> -->
+          <img class="mr-3" :src="require('../assets/NatterSearch.png')" height="40"/>
+
+
 </template>
 
 <script>
@@ -26,4 +29,8 @@ export default {
 </script>
 
 <style>
+.mr-3 {
+  background: black;
+
+}
 </style>

@@ -1,3 +1,6 @@
 {
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "editor.defaultFormatter": "octref.vetur",
+    "editor.linkedEditing": true,
+    "blade.format.enable": true
 }

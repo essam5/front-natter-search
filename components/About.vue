@@ -1,9 +1,9 @@
 <template>
   <div class="main-container">
-    <v-card style="min-width: 400px" elevation="2">
+    <v-card style="min-width: 400px;" elevation="2">
       <v-card-title>About Us</v-card-title>
       <v-card-text>
-        <p style="margin: 40px;"><strong> Your NatterSearch is likely among the top—and thus most clicked—results if someone happens to <p style="color : green ;">Google you or Natter with you</p>
+        <p  style="margin: 40px;"><strong > Your NatterSearch is likely among the top—and thus most clicked—results if someone happens to <p style="color : green ;">Google you or Natter with you</p>
            And a well-curated NatterSearch summary can offer them a wealth of information about your professional background.
           <br> So whether you’re just quietly cruising through options or firing off applications like it’s your other job, <br>
            you want your profile to shine. <br>

@@ -1,21 +1,23 @@
 <template>
   <v-app>
-    <v-app-bar dense flat app color="white">
+    <v-app-bar dense flat app color="black" class="nav">
       <router-link to="/">
-        <v-app-bar-icon>
+        <v-app-bar-icon style="background-color:black;">
           <Logo :logoSize="300" />
         </v-app-bar-icon>
       </router-link>
       <v-spacer />
       <v-btn to="/userProfile" large text plain style="color:green;" v-if="$store.state.user.token"> Profile </v-btn>
 
-      <v-btn to="/about" large text plain style="color:green;" v-else> About </v-btn>
+      <v-btn to="/about" large text plain class="btn" style="color:green;" v-else>
+       About
+       </v-btn>
 
-      <v-btn @click="onSubmit" large text plain style="color:green;" v-if="$store.state.user.token">
+      <v-btn @click="onSubmit" large text plain class="btn" style="color:green;" v-if="$store.state.user.token">
          Log out </v-btn>
 
 
-      <v-btn to="/signin" large text plain style="color:green;" v-else> Sign In </v-btn>
+      <v-btn to="/signin" large text plain class="btn" style="color:green;" v-else> Sign In </v-btn>
 
     </v-app-bar>
 
@@ -79,11 +81,18 @@ export default {
   margin-top: 6px;
 }
 .background {
-  background-image: url(abstract-background-website-landing-page.svg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.822),rgba(22, 18, 18, 0.7)) ,url("../assets/background.jpg");;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 1000vh;
   display: block;
+}
+.nav {
+  background: linear-gradient(rgba(0, 0, 0, 0.822),rgba(22, 18, 18, 0.7));
+}
+.btn {
+  background: rgb(27, 23, 19);
+
 }
 </style>

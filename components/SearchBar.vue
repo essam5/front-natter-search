@@ -58,7 +58,7 @@
           style="z-index: 2"
           v-on:keyup.enter="submit"
           height="100"
-          size="42"
+          size="40"
           type="text"
           placeholder="Search"
           class="search-form"
@@ -91,6 +91,7 @@ export default {
 }
 .small {
   position: absolute;
+  justify-content: center;
   bottom: 16px;
   left:18px;
 }
