@@ -1,21 +1,7 @@
 <template >
     <div  class="main-container">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :width="logoSize"
-    height="50"
-    viewBox="0 0 724 118"
-  >
-    <text
-      transform="translate(0 92)"
-      fill="#3b9a80"
-      font-size="100"
-      font-family="NasalizationRg-Regular, Nasalization"
-    >
-      <tspan x="0" y="0">Natter</tspan>
-      <tspan x="350" y="0" fill="#747474">Search</tspan>
-    </text>
-  </svg>
+
+      <img class="mr-3" :src="require('../assets/NatterSearch.png')" height="70"/>
 
         <search-bar />
     </div>
@@ -41,5 +27,9 @@ export default {
   justify-content: center;
   align-items: center;
   flex-flow: column;
+}
+.mr-3 {
+  background: linear-gradient(rgba(24, 20, 20, 0.822),rgba(53, 44, 44, 0.178));
+
 }
 </style>

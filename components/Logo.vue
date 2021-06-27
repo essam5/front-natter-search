@@ -15,7 +15,7 @@
     </text>
 
   </svg> -->
-          <img class="mr-3" :src="require('../assets/NatterSearch.png')" height="40"/>
+          <img class="mr-3" :src="require('../assets/NatterSearch.png')" height="60"/>
 
 
 </template>
@@ -30,7 +30,7 @@ export default {
 
 <style>
 .mr-3 {
-  background: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.822),rgba(22, 18, 18, 0.7));
 
 }
 </style>

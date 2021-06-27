@@ -35,9 +35,9 @@
           <v-card-actions>
             <v-spacer></v-spacer>
 
-            <!-- <v-dialog v-model="dialog" persistent max-width="600px">
+            <v-dialog v-model="dialog" persistent max-width="600px">
               <template v-slot:activator="{ on, attrs }">
-                <v-btn text v-bind="attrs" v-on="on"> Edit </v-btn>
+                <v-btn text class="edit" v-bind="attrs" v-on="on"> Edit </v-btn>
               </template>
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-card>
@@ -50,36 +50,46 @@
                         <v-col cols="12" sm="6" md="4">
                           <v-text-field
                             label="Name"
-                            v-model="newUser.name"
+                            v-model="user.name"
                             required
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6" md="4">
                           <v-text-field
-                            label="Legal middle name"
-                            v-model="newUser.username"
-                            hint="example of helper text only on focus"
+                            label="your email"
+                            v-model="user.email"
+                            hint="click here to update"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6" md="4">
                           <v-text-field
-                            label="Legal last name*"
-                            v-model="newUser.phone"
-                            hint="example of persistent helper text"
+                            label="your phone"
+                            v-model="user.phone"
+                            hint="click here to update"
                             persistent-hint
-                            required
                           ></v-text-field>
                         </v-col>
                       </v-row>
                     </v-container>
-                    <small>*indicates required field</small>
+                    <small>update your profile</small>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="dialog = false">
+                      Close
+                    </v-btn>
+                    <v-btn
+                      color="blue darken-1"
+                      text
+                      @click="onSubmit"
+
+                    >
+                      Save
+                    </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-form>
-            </v-dialog> -->
+            </v-dialog>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -102,11 +112,6 @@
       </v-card>
       </v-col>
     </v-row>
-    <v-row v-else>
-      <v-card id="card" style="background-color:red;">
-     <p style="margin: 50px;">The given data was invalid <br> you should login or signup</p>
-     </v-card>
-    </v-row>
   </v-container>
 
 </template>
@@ -115,6 +120,7 @@
 <script>
 import Logo from '../components/Logo.vue'
 import SignupForm from '../components/SignupForm.vue'
+import { mapState } from 'vuex'
 import { mapActions } from 'vuex'
 import { mapGetters} from 'vuex'
 
@@ -130,11 +136,35 @@ import { mapGetters} from 'vuex'
 
       }
     },
+ data: () => ({
+    dialog: false,
+    valid: false,
+    user: {
+      name:'',
+      email:'',
+      phone:'',
+    }
+  }),
    methods: {
     ...mapActions({
       signIn: 'user/signIn',
       signUp: 'user/signUp',
+      updateUser: 'user/updateUser',
+
     }),
+    validate() {
+      return this.$refs.form.validate()
+    },
+    onSubmit(e, val) {
+      e.preventDefault()
+      console.log(this.validate());
+      if (this.validate()) {
+        this.updateUser(this.user)
+        // this.dialog = !this.dialog
+        this.$router.push('/userProfile');
+        console.log(this.$store.user);
+      }
+    },
 
     ...mapGetters({
       signIn: 'user/signIn',
@@ -144,6 +174,9 @@ import { mapGetters} from 'vuex'
 
    },
      computed: {
+      ...mapState({
+        user: (state) => state.user,
+      }),
      },
 
 
@@ -167,6 +200,10 @@ import { mapGetters} from 'vuex'
   justify-content: center;
   align-items: center;
   flex-flow: column;
+}
+
+.edit {
+  background: chocolate;
 }
 
  </style>

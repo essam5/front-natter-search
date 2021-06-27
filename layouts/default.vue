@@ -2,14 +2,14 @@
   <v-app>
     <v-app-bar dense flat app color="black" class="nav">
       <router-link to="/">
-        <v-app-bar-icon style="background-color:black;">
+        <v-app-bar-icon >
           <Logo :logoSize="300" />
         </v-app-bar-icon>
       </router-link>
       <v-spacer />
       <v-btn to="/userProfile" large text plain class="btn" style="color:green;" v-if="$store.state.user.token"> Profile </v-btn>
 
-      <v-btn to="/about" large text plain class="btn" style="color:green;" v-else>
+      <v-btn to="/about" large text plain class="btn" style="color:green;" v-if="!$store.state.user.token">
        About
        </v-btn>
 
@@ -17,7 +17,7 @@
          Log out </v-btn>
 
 
-      <v-btn to="/signin" large text plain class="btn" style="color:green;" v-else> Sign In </v-btn>
+      <v-btn to="/signin" large text plain class="btn" style="color:green;" v-if="!$store.state.user.token"> Sign In </v-btn>
 
     </v-app-bar>
 
@@ -68,6 +68,9 @@ export default {
 
     },
   },
+  mounted() {
+    this.$axios.defaults.headers.common["Authorization"] = "Bearer" +" "+localStorage.membre_token;
+}
 }
 </script>
 
